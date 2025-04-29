@@ -1,26 +1,45 @@
 {
   "recipes": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Chocolate Cake",
       "category": "Dessert",
-      "ingredients": ["chocolate", "flour", "sugar"],
-      "steps": ["Mix ingredients", "Bake at 180°C for 30 minutes"],
+      "ingredients": [
+        "chocolate",
+        "flour",
+        "sugar"
+      ],
+      "steps": [
+        "Mix ingredients",
+        "Bake at 180°C for 30 minutes"
+      ],
       "rating": 4
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Quinoa Salad",
       "category": "Vegetarian",
-      "ingredients": ["quinoa", "vegetables", "lemon"],
-      "steps": ["Cook quinoa", "Mix with veggies", "Add lemon dressing"],
+      "ingredients": [
+        "quinoa",
+        "vegetables",
+        "lemon"
+      ],
+      "steps": [
+        "Cook quinoa",
+        "Mix with veggies",
+        "Add lemon dressing"
+      ],
       "rating": 5
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Vegan Curry",
       "category": "Vegan",
-      "ingredients": ["coconut milk", "tofu", "spices"],
+      "ingredients": [
+        "coconut milk",
+        "tofu",
+        "spices"
+      ],
       "steps": [
         "Cook tofu",
         "Add coconut milk and spices",
@@ -29,27 +48,34 @@
       "rating": 4.5
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Apple Pie",
       "category": "Dessert",
-      "ingredients": ["apples", "flour", "cinnamon"],
+      "ingredients": [
+        "apples",
+        "flour",
+        "cinnamon"
+      ],
       "steps": [
         "Prepare dough",
         "Add apple filling",
         "Bake at 200°C for 40 minutes"
       ],
       "rating": 4.8
+    },
+    {
+      "id": "9fc9"
     }
   ],
   "ratings": [
     {
-      "id": 1,
+      "id": "1",
       "recipeId": 1,
       "stars": 4,
       "comment": "Delicious cake!"
     },
     {
-      "id": 2,
+      "id": "2",
       "recipeId": 2,
       "stars": 5,
       "comment": "Super fresh and healthy!"
