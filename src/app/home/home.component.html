@@ -16,7 +16,7 @@
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2002000/svg"
+            xmlns="http://www.w3.org/2000/svg"
           >
             <path
               stroke-linecap="round"
@@ -47,10 +47,12 @@
         <div class="form-check form-switch">
           <input class="form-check-input" type="checkbox" id="topRatedSwitch" [(ngModel)]="topRatedOnly">
           <label class="form-check-label" for="topRatedSwitch">
-            <svg class="star-icon me-1" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-            </svg>
-            Top Rated Only
+            <span class="d-inline-flex align-items-center">
+              <svg class="star-icon me-1" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+              </svg>
+              Top Rated Only
+            </span>
           </label>
         </div>
       </div>
@@ -65,9 +67,11 @@
             <h5 class="card-title">{{ recipe.name }}</h5>
             <p class="card-text text-muted">{{ recipe.category }}</p>
             <div class="d-flex align-items-center">
-              <svg class="star-icon me-1" viewBox="0 0 24 24" fill="currentColor" *ngFor="let star of [1, 2, 3, 4, 5]" [ngClass]="{'text-warning': star <= recipe.rating, 'text-muted': star > recipe.rating}">
-                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-              </svg>
+              <span *ngFor="let star of [1, 2, 3, 4, 5]" class="d-inline-flex">
+                <svg class="star-icon me-1" viewBox="0 0 24 24" fill="currentColor" [ngClass]="{'text-warning': star <= recipe.rating, 'text-muted': star > recipe.rating}">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+              </span>
               <span class="ms-1">{{ recipe.rating }}</span>
             </div>
           </div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common'; // أضفنا CommonModule
 
 interface Recipe {
   id: number;
@@ -13,9 +14,9 @@ interface Recipe {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule], // أضفنا CommonModule هنا
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
   searchQuery: string = '';
@@ -23,7 +24,6 @@ export class HomeComponent {
   selectedIngredient: string = '';
   topRatedOnly: boolean = false;
 
-  // Mock data for recipes
   recipes: Recipe[] = [
     {
       id: 1,
@@ -31,7 +31,8 @@ export class HomeComponent {
       category: 'Dessert',
       mainIngredient: 'Chocolate',
       rating: 4.5,
-      imageUrl: 'https://images.unsplash.com/photo-1606890737304-57a1f225b7fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
+      imageUrl:
+        'https://images.unsplash.com/photo-1606890737304-57a1f225b7fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
     },
     {
       id: 2,
@@ -39,7 +40,8 @@ export class HomeComponent {
       category: 'Vegetarian',
       mainIngredient: 'Quinoa',
       rating: 4.0,
-      imageUrl: 'https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
+      imageUrl:
+        'https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
     },
     {
       id: 3,
@@ -47,7 +49,8 @@ export class HomeComponent {
       category: 'Vegan',
       mainIngredient: 'Tofu',
       rating: 4.8,
-      imageUrl: 'https://images.unsplash.com/photo-1600356938592-6e5e6f7227d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
+      imageUrl:
+        'https://images.unsplash.com/photo-1600356938592-6e5e6f7227d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
     },
     {
       id: 4,
@@ -55,8 +58,9 @@ export class HomeComponent {
       category: 'Dessert',
       mainIngredient: 'Apple',
       rating: 4.2,
-      imageUrl: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
-    }
+      imageUrl:
+        'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+    },
   ];
 
   categories: string[] = ['ALL', 'Dessert', 'Vegetarian', 'Vegan'];
@@ -67,12 +71,20 @@ export class HomeComponent {
   }
 
   get filteredRecipes(): Recipe[] {
-    return this.recipes.filter(recipe => {
-      const matchesCategory = this.selectedCategory === 'ALL' || recipe.category === this.selectedCategory;
-      const matchesIngredient = !this.selectedIngredient || recipe.mainIngredient === this.selectedIngredient;
+    return this.recipes.filter((recipe) => {
+      const matchesCategory =
+        this.selectedCategory === 'ALL' ||
+        recipe.category === this.selectedCategory;
+      const matchesIngredient =
+        !this.selectedIngredient ||
+        recipe.mainIngredient === this.selectedIngredient;
       const matchesRating = !this.topRatedOnly || recipe.rating >= 4.5;
-      const matchesSearch = !this.searchQuery || recipe.name.toLowerCase().includes(this.searchQuery.toLowerCase());
-      return matchesCategory && matchesIngredient && matchesRating && matchesSearch;
+      const matchesSearch =
+        !this.searchQuery ||
+        recipe.name.toLowerCase().includes(this.searchQuery.toLowerCase());
+      return (
+        matchesCategory && matchesIngredient && matchesRating && matchesSearch
+      );
     });
   }
 }
