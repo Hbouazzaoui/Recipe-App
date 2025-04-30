@@ -1,1 +1,32 @@
-<p>home works!</p>
+<section class="hero-section">
+  <div class="container text-center">
+    <h1 class="hero-title">Find and enjoy the best dishes crafted</h1>
+    <div class="search-container mx-auto">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control search-input"
+          placeholder="Search for a recipe or chef..."
+          [(ngModel)]="searchQuery"
+          (keyup.enter)="onSearch()"
+        />
+        <span class="input-group-text bg-transparent border-0">
+          <svg
+            class="search-icon"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            ></path>
+          </svg>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
