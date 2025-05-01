@@ -1,1 +1,44 @@
-<p>login works!</p>
+<section class="login-section py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h2 class="card-title text-center mb-4">Login</h2>
+            <form (ngSubmit)="onLogin()" class="needs-validation" novalidate>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  [(ngModel)]="loginData.email"
+                  name="email"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  [(ngModel)]="loginData.password"
+                  name="password"
+                  required
+                />
+              </div>
+              <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+                {{ errorMessage }}
+              </div>
+              <button type="submit" class="btn btn-success w-100">Login</button>
+            </form>
+            <div class="text-center mt-3">
+              <a routerLink="/register" class="text-decoration-none">Don't have an account? Register</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
