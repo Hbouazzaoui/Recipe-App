@@ -2,8 +2,15 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 interface LoginData {
+  email: string;
+  password: string;
+}
+
+interface User {
+  id: number;
   email: string;
   password: string;
 }
@@ -19,21 +26,27 @@ export class LoginComponent {
   loginData: LoginData = { email: '', password: '' };
   errorMessage: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   onLogin() {
-    // Mock login logic (replace with real API call later)
-    const validEmail = 'user@example.com';
-    const validPassword = 'password123';
+    this.http.get<User[]>('http://localhost:3000/users').subscribe(
+      (users) => {
+        const user = users.find(
+          (u) =>
+            u.email === this.loginData.email &&
+            u.password === this.loginData.password
+        );
+        if (user) {
+          this.errorMessage = '';
 
-    if (
-      this.loginData.email === validEmail &&
-      this.loginData.password === validPassword
-    ) {
-      this.errorMessage = '';
-      this.router.navigate(['/']); // Redirect to home on success
-    } else {
-      this.errorMessage = 'Invalid email or password';
-    }
+          this.router.navigate(['/']);
+        } else {
+          this.errorMessage = 'Invalid email or password';
+        }
+      },
+      (error) => {
+        this.errorMessage = 'Error connecting to server';
+      }
+    );
   }
 }
