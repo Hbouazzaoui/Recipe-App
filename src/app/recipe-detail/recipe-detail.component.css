@@ -1,0 +1,32 @@
+.recipe-detail-section {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.recipe-image {
+  height: 400px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.card-title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.star-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.list-group-item {
+  border: none;
+  background-color: transparent;
+}

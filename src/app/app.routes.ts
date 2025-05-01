@@ -9,7 +9,4 @@ export const routes: Routes = [
   { path: 'recipes', component: RecipeListComponent },
   { path: 'recipe/:id', component: RecipeDetailComponent },
   { path: 'login', component: LoginComponent },
-  
-
-
 ];

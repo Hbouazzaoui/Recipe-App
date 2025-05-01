@@ -1,1 +1,57 @@
-<p>recipe-detail works!</p>
+<section class="recipe-detail-section py-5">
+  <div class="container">
+    <a routerLink="/" class="btn btn-outline-secondary mb-4">
+      <svg class="me-1" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+      </svg>
+      Back
+    </a>
+
+    <div *ngIf="recipe; else notFound">
+      <div class="card shadow-sm">
+        <img [src]="recipe.imageUrl" class="card-img-top recipe-image" [alt]="recipe.name">
+        <div class="card-body">
+          <h1 class="card-title">{{ recipe.name }}</h1>
+          <p class="card-text text-muted">{{ recipe.category }}</p>
+          <div class="d-flex align-items-center mb-4">
+            <span *ngFor="let star of [1, 2, 3, 4, 5]" class="d-inline-flex">
+              <svg class="star-icon me-1" viewBox="0 0 24 24" fill="currentColor" [ngClass]="{'text-warning': star <= recipe.rating, 'text-muted': star > recipe.rating}">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+              </svg>
+            </span>
+            <span class="ms-1">{{ recipe.rating }}</span>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h3 class="card-title">Ingredients</h3>
+                  <ul class="list-group list-group-flush">
+                    <li *ngFor="let ingredient of recipe.ingredients" class="list-group-item">{{ ingredient }}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h3 class="card-title">Instructions</h3>
+                  <ol class="list-group list-group-numbered">
+                    <li *ngFor="let instruction of recipe.instructions" class="list-group-item">{{ instruction }}</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #notFound>
+      <div class="alert alert-warning text-center">
+        Recipe not found.
+      </div>
+    </ng-template>
+  </div>
+</section>
