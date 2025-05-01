@@ -14,7 +14,7 @@ interface Recipe {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule, CommonModule], // أضفنا CommonModule هنا
+  imports: [FormsModule, CommonModule], 
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
@@ -32,7 +32,7 @@ export class HomeComponent {
       mainIngredient: 'Chocolate',
       rating: 4.5,
       imageUrl:
-        'https://images.unsplash.com/photo-1606890737304-57a1f225b7fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+        'https://assets.tmecosys.com/image/upload/t_web_rdp_recipe_584x480/img/recipe/ras/Assets/0A475B34-4E78-40D8-9F30-46223B7D77E7/Derivates/E55C7EA4-0E60-403F-B5DC-75EA358197BD.jpg',
     },
     {
       id: 2,
@@ -50,7 +50,7 @@ export class HomeComponent {
       mainIngredient: 'Tofu',
       rating: 4.8,
       imageUrl:
-        'https://images.unsplash.com/photo-1600356938592-6e5e6f7227d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+        'https://cdn77-s3.lazycatkitchen.com/wp-content/uploads/2019/03/vegan-thai-green-curry-close-up-1000x1500.jpg',
     },
     {
       id: 4,

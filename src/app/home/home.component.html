@@ -10,7 +10,7 @@
           [(ngModel)]="searchQuery"
           (keyup.enter)="onSearch()"
         />
-        <span class="input-group-text bg-transparent border-0">
+        <span class="input-group-text bg-white border-0">
           <svg
             class="search-icon"
             fill="none"
@@ -38,18 +38,33 @@
       <div class="filters d-flex gap-3 align-items-center">
         <select class="form-select" [(ngModel)]="selectedCategory">
           <option value="ALL">Categories</option>
-          <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+          <option *ngFor="let category of categories" [value]="category">
+            {{ category }}
+          </option>
         </select>
         <select class="form-select" [(ngModel)]="selectedIngredient">
           <option value="">Main Ingredient</option>
-          <option *ngFor="let ingredient of ingredients" [value]="ingredient">{{ ingredient }}</option>
+          <option *ngFor="let ingredient of ingredients" [value]="ingredient">
+            {{ ingredient }}
+          </option>
         </select>
         <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" id="topRatedSwitch" [(ngModel)]="topRatedOnly">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="topRatedSwitch"
+            [(ngModel)]="topRatedOnly"
+          />
           <label class="form-check-label" for="topRatedSwitch">
             <span class="d-inline-flex align-items-center">
-              <svg class="star-icon me-1" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+              <svg
+                class="star-icon me-1"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                />
               </svg>
               Top Rated Only
             </span>
@@ -62,14 +77,28 @@
     <div class="row">
       <div class="col-md-3" *ngFor="let recipe of filteredRecipes">
         <div class="card mb-4 shadow-sm">
-          <img [src]="recipe.imageUrl" class="card-img-top" alt="{{ recipe.name }}">
+          <img
+            [src]="recipe.imageUrl"
+            class="card-img-top"
+            alt="{{ recipe.name }}"
+          />
           <div class="card-body">
             <h5 class="card-title">{{ recipe.name }}</h5>
             <p class="card-text text-muted">{{ recipe.category }}</p>
             <div class="d-flex align-items-center">
               <span *ngFor="let star of [1, 2, 3, 4, 5]" class="d-inline-flex">
-                <svg class="star-icon me-1" viewBox="0 0 24 24" fill="currentColor" [ngClass]="{'text-warning': star <= recipe.rating, 'text-muted': star > recipe.rating}">
-                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                <svg
+                  class="star-icon me-1"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  [ngClass]="{
+                    'text-warning': star <= recipe.rating,
+                    'text-muted': star > recipe.rating
+                  }"
+                >
+                  <path
+                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                  />
                 </svg>
               </span>
               <span class="ms-1">{{ recipe.rating }}</span>
