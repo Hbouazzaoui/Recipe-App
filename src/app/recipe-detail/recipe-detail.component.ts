@@ -51,10 +51,14 @@ export class RecipeDetailComponent implements OnInit {
     if (this.recipe && this.comment.username && this.comment.text) {
       if (!this.recipe.comments) this.recipe.comments = [];
       this.recipe.comments.push({ ...this.comment });
+      const updatedRecipe = { ...this.recipe };
       this.comment = { username: '', text: '' }; // Reset form
       // Update comments in JSON Server
       this.http
-        .patch(`http://localhost:3000/recipes/${this.recipe.id}`, this.recipe)
+        .patch(
+          `http://localhost:3000/recipe/${updatedRecipe.id}`,
+          updatedRecipe
+        )
         .subscribe(
           () => {
             console.log('Comment added successfully');
@@ -68,17 +72,16 @@ export class RecipeDetailComponent implements OnInit {
 
   setRating(newRating: number) {
     if (this.recipe) {
+      const recipeId = this.recipe.id;
       this.recipe.rating = newRating;
       // Update rating in JSON Server
       this.http
-        .patch(`http://localhost:3000/recipes/${this.recipe.id}`, {
+        .patch(`http://localhost:3000/recipe/${recipeId}`, {
           rating: newRating,
         })
         .subscribe(
           () => {
-            console.log(
-              `Rating updated for recipe ${this.recipe.id}: ${newRating}`
-            );
+            console.log(`Rating updated for recipe ${recipeId}: ${newRating}`);
           },
           (error) => {
             console.error('Error updating rating:', error);

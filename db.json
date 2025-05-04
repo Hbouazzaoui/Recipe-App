@@ -81,16 +81,19 @@
       "comment": "Super fresh and healthy!"
     }
   ],
-
-  "recipes": [
+  "recipe": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Chocolate Cake",
       "category": "Dessert",
       "mainIngredient": "Chocolate",
-      "rating": 4.5,
+      "rating": 1,
       "imageUrl": "https://images.unsplash.com/photo-1606890737304-57a1f225b7fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      "ingredients": ["200g Chocolate", "150g Flour", "100g Sugar", "3 Eggs", "50g Butter"],
+      "ingredients": [
+        "chocolate",
+        "flour",
+        "sugar"
+      ],
       "instructions": [
         "Preheat oven to 180°C.",
         "Melt chocolate and butter together.",
@@ -98,15 +101,23 @@
         "Combine all ingredients and pour into a baking tin.",
         "Bake for 25 minutes."
       ],
-      "comments": []
+      "comments": [
+        {
+          "username": "bouazzaoui",
+          "text": "this is greate \n"
+        }
+      ],
+      "steps": [
+        "Mix ingredients",
+        "Bake at 180°C for 30 minutes"
+      ]
     }
   ],
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "email": "user@example.com",
       "password": "password123"
     }
   ]
 }
-
