@@ -1,0 +1,12 @@
+.rating-system {
+  cursor: pointer;
+}
+
+.star-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.star-icon:hover {
+  transform: scale(1.2);
+}

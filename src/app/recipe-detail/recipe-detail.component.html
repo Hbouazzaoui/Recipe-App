@@ -14,6 +14,7 @@
           <h1 class="card-title">{{ recipe.name }}</h1>
           <p class="card-text text-muted">{{ recipe.category }}</p>
           <div class="d-flex align-items-center mb-4">
+            <!-- Display Rating (Read-Only) -->
             <span *ngFor="let star of [1, 2, 3, 4, 5]" class="d-inline-flex">
               <svg class="star-icon me-1" viewBox="0 0 24 24" fill="currentColor" [ngClass]="{'text-warning': star <= recipe.rating, 'text-muted': star > recipe.rating}">
                 <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
@@ -41,6 +42,58 @@
                     <li *ngFor="let instruction of recipe.instructions" class="list-group-item">{{ instruction }}</li>
                   </ol>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h3 class="card-title">Comments</h3>
+              <ul class="list-group list-group-flush" *ngIf="recipe.comments?.length; else noComments">
+                <li *ngFor="let comment of recipe.comments" class="list-group-item">
+                  <h5>{{ comment.username }}</h5>
+                  <p>{{ comment.text }}</p>
+                </li>
+              </ul>
+              <ng-template #noComments>
+                <p class="text-muted">No comments yet.</p>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h3 class="card-title">Add Comment</h3>
+              <form (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+                <div class="mb-3">
+                  <label for="username" class="form-label">Username</label>
+                  <input type="text" class="form-control" id="username" [(ngModel)]="comment.username" name="username" required>
+                </div>
+                <div class="mb-3">
+                  <label for="text" class="form-label">Comment</label>
+                <textarea class="form-control" id="text" [(ngModel)]="comment.text" name="text" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h3 class="card-title">Rate Recipe</h3>
+              <div class="rating">
+                <!-- Editable Rating -->
+                <span *ngFor="let star of [1, 2, 3, 4, 5]" class="d-inline-flex">
+                  <svg class="star-icon me-1" viewBox="0 0 24 24" fill="currentColor" [ngClass]="{'text-warning': star <= recipe.rating, 'text-muted': star > recipe.rating}" (click)="setRating(star)">
+                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                  </svg>
+                </span>
               </div>
             </div>
           </div>

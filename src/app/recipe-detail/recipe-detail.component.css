@@ -1,36 +1,25 @@
 .recipe-detail-section {
   background-color: #f8f9fa;
   min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
 .recipe-image {
-  height: 400px;
   object-fit: cover;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.card {
-  border: none;
-  border-radius: 10px;
-  background-color: #ffffff;
-}
-
-.card-title {
-  font-size: 2rem;
-  font-weight: bold;
+  height: 300px;
 }
 
 .star-icon {
-  width: 1rem;
-  height: 1rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
 }
 
-.list-group-item {
-  border: none;
-  background-color: transparent;
+.star-icon:hover {
+  transform: scale(1.2);
 }
-.py-5 {
-    padding-top: 4rem !important;
-    padding-bottom: 3rem !important;
+
+.rating {
+  margin-top: 10px;
 }
